@@ -1,16 +1,10 @@
 <?php
-// Databaseverbinding laden
 require 'database.php';
 
-// ID van het boek ophalen uit de URL
 $id = $_GET['id'] ?? 0;
 
-// SQL query maken om één boek op te halen
-$sql = "SELECT * FROM boek WHERE id = $id";
-$stmt = $pdo->query($sql);
-$book = $stmt->fetch(PDO::FETCH_ASSOC);
+$book = $pdo->query("SELECT * FROM boek WHERE id = $id")->fetch(PDO::FETCH_ASSOC);
 
-// Controleren of het boek bestaat
 if (!$book) {
     echo "Boek niet gevonden.";
     exit;
@@ -23,42 +17,41 @@ if (!$book) {
     <title>Detailpagina</title>
 
     <style>
-        /* Hele pagina centreren */
         body {
             font-family: Arial;
+            background:     #0e223c; 
+            text-align: center;
             margin: 0;
-            background-color: #f5f5f5;
+            padding: 40px 20px;
         }
 
-        /* Container in het midden */
-        .detail-container {
-            max-width: 800px;
-            margin: 50px auto;
+        .detail {
             background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 25px;
+            border-radius: 6px;
         }
 
         img {
-            display: block;
+            width: 200px;
             margin: 20px 0;
         }
 
         a {
             text-decoration: none;
-            color: blue;
+            color: #007BFF;
         }
     </style>
 </head>
 
 <body>
 
-<div class="detail-container">
+<div class="detail">
 
     <h1><?= $book['titel'] ?></h1>
 
-    <img src="<?= $book['thumbnail_url'] ?>" width="200">
+    <img src="<?= $book['thumbnail_url'] ?>">
 
     <p><strong>Auteur:</strong> <?= $book['auteur'] ?></p>
     <p><strong>Genre:</strong> <?= $book['genre'] ?></p>
@@ -72,7 +65,7 @@ if (!$book) {
     <p><?= $book['beschrijving'] ?></p>
 
     <br>
-    <a href="index.php">⬅ Terug naar overzicht</a>
+    <a href="index.php">← Terug naar overzicht</a>
 
 </div>
 
