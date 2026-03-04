@@ -3,57 +3,18 @@
 require 'database.php';
 
 // Alle boeken ophalen
-$books = $pdo->query("SELECT * FROM boek")->fetchAll(PDO::FETCH_ASSOC);
+$result = $pdo->query("SELECT * FROM boek");
+$books = array();
+while ($book = $result->fetch(PDO::FETCH_ASSOC)) {
+    $books[] = $book;
+}
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
     <title>Bookstore</title>
-
-    <style>
-        body {
-            font-family: Arial;
-            background-color: #0e223c;
-            text-align: center;
-            margin: 0;
-            padding: 40px 20px;
-        }
-
-        h1 {
-            margin-bottom: 40px;
-        }
-
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .book {
-            background: white;
-            padding: 15px;
-            width: 200px;
-            border-radius: 6px;
-        }
-
-        .book img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            margin-top: 10px;
-        }
-
-        a {
-            text-decoration: none;
-            color: #2c3e50;
-        }
-
-        a:hover {
-            color: #007BFF;
-        }
-    </style>
+    <link rel="stylesheet" href="styl.css">
 </head>
 
 <body>

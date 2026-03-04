@@ -15,34 +15,7 @@ if (!$book) {
 <html>
 <head>
     <title>Detailpagina</title>
-
-    <style>
-        body {
-            font-family: Arial;
-            background:     #0e223c; 
-            text-align: center;
-            margin: 0;
-            padding: 40px 20px;
-        }
-
-        .detail {
-            background: white;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 25px;
-            border-radius: 6px;
-        }
-
-        img {
-            width: 200px;
-            margin: 20px 0;
-        }
-
-        a {
-            text-decoration: none;
-            color: #007BFF;
-        }
-    </style>
+    <link rel="stylesheet" href="styl.css">
 </head>
 
 <body>
