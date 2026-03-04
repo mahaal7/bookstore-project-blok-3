@@ -1,7 +1,11 @@
 <?php
+$dbhost = 'mariadb';
+$dbname = 'bookstore';
+$dbuser = 'user';
+$dbpass = 'password';
 
-$pdo = new PDO(
-    "mysql:host=mariadb;dbname=bookstore;charset=utf8mb4",
-    "root",
-    "password"
-);
+$conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+if (mysqli_connect_errno()) {
+    echo ''. mysqli_connect_error();
+    exit();
+}
