@@ -4,7 +4,7 @@ require 'database.php';
 $id = $_GET['id'] ?? 0;
 $result = $pdo->query("SELECT * FROM boek WHERE id = $id");
 
-$found = false;
+
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +16,6 @@ $found = false;
 <body>
 
 <?php foreach ($result as $book): 
-    $found = true;
 ?>
     <div class="detail">
         <h1><?= $book['titel'] ?></h1>
@@ -34,12 +33,6 @@ $found = false;
         <a href="index.php">← Terug naar overzicht</a>
     </div>
 <?php endforeach; ?>
-
-<?php
-if (!$found) {
-    echo "Boek niet gevonden.";
-}
-?>
 
 </body>
 </html>
